@@ -1,0 +1,40 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/index.php"
+  to = "/index.html"
+  status = 301
+
+[[redirects]]
+  from = "/het-bedrijf.php"
+  to = "/over-ons.html"
+  status = 301
+
+[[redirects]]
+  from = "/buiten-schilderwerk.php"
+  to = "/diensten.html"
+  status = 301
+
+[[redirects]]
+  from = "/binnenschilderwerk.php"
+  to = "/diensten.html"
+  status = 301
+
+[[redirects]]
+  from = "/projecten.php"
+  to = "/projecten.html"
+  status = 301
+
+[[redirects]]
+  from = "/contact.php"
+  to = "/contact.html"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
