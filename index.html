@@ -20,7 +20,7 @@
     "name": "J.J. Gieze Schilderwerk",
     "url": "https://jjgiezeschilderwerk.nl",
     "telephone": "+31624606967",
-    "email": "jeffrie@gieze.com",
+    "email": "jeffrie@gieze.nl",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Brasserskade 48",
@@ -49,13 +49,9 @@
 
     .hero {
       position: relative;
-      /*
-        De bus is 4:3 (breedte:hoogte).
-        Bij een brede viewport wil je de hero-hoogte gelijk stellen aan
-        75vw (= 75% van de breedte = de exacte hoogte van een 4:3 foto).
-        Min 500px zodat tekst altijd past; max 100vh voor grote schermen.
-      */
-      height: clamp(500px, 75vw, 100vh);
+      /* Foto is nu 2048×1128 ≈ 16:9. Hoogte = 55vw past perfect.
+         Onderkant foto wordt iets bijgesneden door object-position top. */
+      height: clamp(520px, 56vw, 95vh);
       min-height: unset;
       display: flex;
       align-items: flex-end;
@@ -68,20 +64,17 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      /*
-        cover: foto dekt altijd het hele vlak, geen zwarte balken.
-        Bij een exacte 4:3 hero past de foto perfect.
-        object-position center center: bus gecentreerd.
-      */
       object-fit: cover;
-      object-position: center center;
+      /* Foto van bovenaf zodat bus volledig zichtbaar is,
+         onderkant (stoep) wordt bijgesneden als nodig */
+      object-position: center top;
     }
 
-    /* Donkere tint — bus zichtbaar, tekst goed leesbaar */
+    /* 50% donkere tint — duidelijk zichtbaar maar niet zwart */
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.48);
+      background: rgba(0, 0, 0, 0.50);
       z-index: 1;
     }
 
@@ -340,14 +333,6 @@
         <div class="hero-stat hero-stat--accent">
           <span class="hero-stat-num">30+</span>
           <span class="hero-stat-label">Jaar ervaring</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">1994</span>
-          <span class="hero-stat-label">Gediplomeerd</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">100%</span>
-          <span class="hero-stat-label">Eerlijke prijs</span>
         </div>
       </div>
 
