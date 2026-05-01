@@ -31,7 +31,7 @@ function initHeaderScroll() {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // direct uitvoeren bij laden
+  onScroll();
 }
 
 /* ——— 3. MOBIEL MENU ——— */
@@ -47,7 +47,6 @@ function initMobileNav() {
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
-  // Sluit menu bij klik op link
   mobileNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileNav.classList.remove('open');
@@ -57,7 +56,6 @@ function initMobileNav() {
     });
   });
 
-  // Sluit menu bij Escape-toets
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
       mobileNav.classList.remove('open');
@@ -80,7 +78,7 @@ function initActiveNav() {
   });
 }
 
-/* ——— 5. FADE-IN ANIMATIES (IntersectionObserver) ——— */
+/* ——— 5. FADE-IN ANIMATIES ——— */
 function initAnimations() {
   const els = document.querySelectorAll('.fade-up');
   if (!els.length) return;
@@ -129,7 +127,7 @@ function initContactForm() {
         alert('Er is iets misgegaan. Probeer het opnieuw of stuur een e-mail naar jeffrie@gieze.com');
       }
     } catch {
-      alert('Geen verbinding. Neem direct contact op via jeffrie@gieze.com of 06 2460 6967.');
+      alert('Geen verbinding. Neem direct contact op via jeffrie@gieze.com of 06 246 069 67.');
     }
 
     btn.textContent = originalText;
@@ -137,15 +135,13 @@ function initContactForm() {
   });
 }
 
-/* ——— 7. BOOTSTRAP — alles na laden van componenten ——— */
+/* ——— 7. BOOTSTRAP ——— */
 async function init() {
-  // Laad header en footer parallel
   await Promise.all([
     loadComponent('header-placeholder', 'components/header.html'),
     loadComponent('footer-placeholder', 'components/footer.html'),
   ]);
 
-  // Init functies die afhankelijk zijn van geladen componenten
   initHeaderScroll();
   initMobileNav();
   initActiveNav();
