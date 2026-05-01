@@ -49,38 +49,39 @@
 
     .hero {
       position: relative;
-      min-height: 100vh;
+      /*
+        De bus is 4:3 (breedte:hoogte).
+        Bij een brede viewport wil je de hero-hoogte gelijk stellen aan
+        75vw (= 75% van de breedte = de exacte hoogte van een 4:3 foto).
+        Min 500px zodat tekst altijd past; max 100vh voor grote schermen.
+      */
+      height: clamp(500px, 75vw, 100vh);
+      min-height: unset;
       display: flex;
       align-items: flex-end;
       overflow: hidden;
-      /* Donkere achtergrond die zichtbaar is naast de bus (contain) */
-      background: #111111;
+      background: #111;
     }
 
-    /*
-      De bus is 2048×1536 (landscape 4:3).
-      Met object-fit: contain wordt de volledige bus getoond.
-      We plaatsen hem centraal verticaal, iets naar rechts voor compositie.
-    */
     .hero-bg-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      /*
+        cover: foto dekt altijd het hele vlak, geen zwarte balken.
+        Bij een exacte 4:3 hero past de foto perfect.
+        object-position center center: bus gecentreerd.
+      */
+      object-fit: cover;
       object-position: center center;
-      opacity: 1;
     }
 
-    /*
-      Donkere tint over de hele foto — uniform, geen gradient.
-      rgba(0,0,0,0.52) = ~50% donker, bus blijft zichtbaar maar
-      header + tekst zijn perfect leesbaar.
-    */
+    /* Donkere tint — bus zichtbaar, tekst goed leesbaar */
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.52);
+      background: rgba(0, 0, 0, 0.48);
       z-index: 1;
     }
 
