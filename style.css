@@ -425,10 +425,20 @@ footer {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;   /* alle 3 kolommen even breed */
-  gap: 4rem;                              /* gelijkmatige ruimte ertussen */
+  grid-template-columns: 1.4fr 1fr 1fr;  /* eerste kolom iets breder voor logo + tekst */
+  gap: 0;                                  /* geen gap, we regelen spacing via padding */
   margin-bottom: 3rem;
   align-items: start;
+}
+
+/* Elke kolom krijgt gelijke padding zodat de tussenruimte uniform is */
+.footer-brand,
+.footer-col {
+  padding-right: 3rem;
+}
+
+.footer-col:last-child {
+  padding-right: 0;
 }
 
 .footer-brand .logo-footer {
@@ -450,7 +460,7 @@ footer {
   color: rgba(255,255,255,0.45);
   font-size: 0.9rem;
   line-height: 1.75;
-  max-width: 280px;
+  max-width: 100%;
 }
 
 .footer-social {
@@ -1636,6 +1646,11 @@ footer {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+
+  .footer-brand,
+  .footer-col {
+    padding-right: 0;
   }
 
   .footer-bottom {
