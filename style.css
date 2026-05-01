@@ -188,7 +188,7 @@ header.scrolled .hamburger span { background: var(--text); }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.20);
+  background: rgba(0, 0, 0, 0.50);
   z-index: 1;
 }
 
