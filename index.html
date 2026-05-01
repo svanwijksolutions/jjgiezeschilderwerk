@@ -47,40 +47,40 @@
   <style>
     /* ── HERO REDESIGN ─────────────────────────────────────── */
 
-    /* Overschrijf de bestaande hero zodat de bus volledig zichtbaar is */
     .hero {
       position: relative;
       min-height: 100vh;
       display: flex;
-      align-items: flex-end;   /* tekst onderaan, boven de stats */
+      align-items: flex-end;
       overflow: hidden;
-      background: #0a0a0a;
+      /* Donkere achtergrond die zichtbaar is naast de bus (contain) */
+      background: #111111;
     }
 
-    /* Bus foto: volledig centraal, geen opacity-mist */
+    /*
+      De bus is 2048×1536 (landscape 4:3).
+      Met object-fit: contain wordt de volledige bus getoond.
+      We plaatsen hem centraal verticaal, iets naar rechts voor compositie.
+    */
     .hero-bg-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center center;
-      opacity: 1;               /* volle foto */
+      opacity: 1;
     }
 
-    /* Gradient overlay: transparant bovenaan → zwart onderaan */
-    /* Zo is de bus goed zichtbaar maar is tekst altijd leesbaar */
+    /*
+      Donkere tint over de hele foto — uniform, geen gradient.
+      rgba(0,0,0,0.52) = ~50% donker, bus blijft zichtbaar maar
+      header + tekst zijn perfect leesbaar.
+    */
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(0,0,0,0.15)  0%,
-          rgba(0,0,0,0.10) 30%,
-          rgba(0,0,0,0.55) 65%,
-          rgba(0,0,0,0.92) 100%
-        );
+      background: rgba(0, 0, 0, 0.52);
       z-index: 1;
     }
 
@@ -284,14 +284,6 @@
       .hero-stat:last-child  { border-radius: 0 2px 2px 0; border-right: 1px solid rgba(255,255,255,0.10); }
       .hero-stat-num { font-size: 1.8rem; }
       .hero-diagonal { display: none; }
-      .hero-overlay {
-        background: linear-gradient(
-          to bottom,
-          rgba(0,0,0,0.25) 0%,
-          rgba(0,0,0,0.55) 50%,
-          rgba(0,0,0,0.95) 100%
-        );
-      }
     }
   </style>
 </head>
